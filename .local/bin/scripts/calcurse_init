@@ -1,0 +1,6 @@
+#!/usr/bin/env bash 
+
+
+urxvt -name calcurseMcGill -e sh -c "calcurse -D ~/.calcurse/McGill -C ~/.calcurse/McGill" &
+urxvt -name calcurseGeneral -e sh -c "calcurse -D ~/.calcurse/General -C ~/.calcurse/General" &
+urxvt -name calcurseComputer -e sh -c "calcurse -D ~/.calcurse/Computer -C ~/.calcurse/Computer" &

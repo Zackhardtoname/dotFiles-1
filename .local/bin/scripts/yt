@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+mplayer "$(youtube-dl -g -f 22 $1)" -af scaletempo &
