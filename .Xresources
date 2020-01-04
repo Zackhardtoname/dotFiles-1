@@ -1,0 +1,128 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+!! Xft.autohint: true
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+URxvt.intensityStyles:	false
+URxvt.background:       [70]#000000
+URxvt.depth:		32
+URxvt.font: 		xft:monospace:size=12
+URxvt.scrollBar:	false
+URxvt.cursorColor:	white
+*pointerColorBackground:          #2B2C2B
+*pointerColorForeground:          #16A085
+*fading:                          15
+*fadeColor:                       black
+URxvt*mouseWheelScrollPage:       false
+URxvt*saveLines:                  5000
+
+
+!! Transparency (0-1):
+st.alpha: 0.92
+
+!! Set a default font and font size as below:
+st.font: monospace-11.75;
+!! st.font: Liberation Mono:pixelsize=12:antialias=true:autohint=true;
+!! *.font: Liberation Mono:pixelsize=12:antialias=true:autohint=true;
+
+st.termname: st-256color
+st.borderpx: 2
+
+
+
+!! brogrammer:
+*.foreground:  #d6dbe5 
+!! *.background:  #131313 
+*.background:  #282828
+*.color0:      #1f1f1f 
+*.color8:      #d6dbe5 
+*.color1:      #f81118 
+*.color9:      #de352e 
+*.color2:      #2dc55e 
+*.color10:     #1dd361 
+*.color3:      #ecba0f 
+*.color11:     #f3bd09 
+*.color4:      #2a84d2 
+*.color12:     #1081d6 
+*.color5:      #4e5ab7 
+*.color13:     #5350b9 
+*.color6:      #00CCCC 
+*.color14:     #00D1D1 
+*.color7:      #d6dbe5 
+*.color15:     #ffffff 
+*.colorBD:     #d6dbe5 
+
+Xcursor.theme: xcursor-breeze
+Xcursor.size:                     0
+
+!!  *.foreground:  #d6dbe5 
+!!  *.background:  #131313 
+!!  *.color0:      #1f1f1f 
+!!  *.color8:      #d6dbe5 
+!!  *.color1:      #f81118 
+!!  *.color9:      #de352e 
+!!  *.color2:      #2dc55e 
+!!  *.color10:     #1dd361 
+!!  *.color3:      #ecba0f 
+!!  *.color11:     #f3bd09 
+!!  *.color4:      #2a84d2 
+!!  *.color12:     #1081d6 
+!!  *.color5:      #4e5ab7 
+!!  *.color13:     #5350b9 
+!!  *.color6:      #00CCCC 
+!!  *.color14:     #00D1D1 
+!!  *.color7:      #d6dbe5 
+!!  *.color15:     #ffffff 
+!!  *.colorBD:     #d6dbe5 
+!! 
+!! URxvt.intensityStyles:	false
+!! URxvt.background:       [70]#000000
+!! URxvt.depth:		32
+!! URxvt.font: 		xft:monospace:size=12
+!! URxvt.scrollBar:	false
+!! URxvt.cursorColor:	white
+
+!! Extensions
+URxvt.perl-ext-common:	default,matcher,resize-font,url-select,keyboard-select,selection-to-clipboard 
+URxvt.colorUL:		#4682B4
+
+!! url-select
+URxvt.keysym.M-u:	perl:url-select:select_next
+URxvt.keysym.M-k: command:\033]720;1\007
+URxvt.keysym.M-j: command:\033]721;1\007
+URxvt.url-select.launcher: linkhandler
+URxvt.url-select.underline: true
+URxvt.url-select.button: 1
+
+URxvt.urlLauncher:     firefox
+URxvt.underlineURLs:   true
+
+!! keyboard-select:
+!! If true, copy to clipboard too
+URxvt.keyboard-select.clipboard: true
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+!! resize-font
+URxvt.resize-font.smaller:	C-Down
+URxvt.resize-font.bigger:	C-Up
+
+!! Matcher
+URxvt.url-launcher:	firefox
+URxvt.matcher.button:	1
+
+rofi.color-enabled:	true
+rofi.color-window:	#000, #000, #000
+rofi.color-normal:	#111, #819396, #222, #008ed4, #ffffff
+rofi.color-active:	#002b37, #008ed4, #003643, #008ed4, #66c6ff
+rofi.color-urgent:	#002b37, #da4281, #003643, #008ed4, #890661
+
+rofi.fake-transparency:	true
+rofi.lines:		3
+rofi.bw:		0
+rofi.opacity:		"5"
+rofi.hide-scrollbar:	true
+rofi.width:		30

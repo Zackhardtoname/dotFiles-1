@@ -1,0 +1,21 @@
+\ProvidesPackage{cole}
+
+\usepackage{array}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage[linguistics]{forest}
+\usetikzlibrary{shapes.geometric, calc}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{graphicx}
+% \usepackage{esint}
+\usepackage{nicematrix}
+\NiceMatrixOptions{transparent}
+
+\usepackage{listofitems}
+\newcommand\cycle[2][\,]{%
+  \readlist\thecycle{#2}%
+  (\foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i})%
+}
+
