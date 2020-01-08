@@ -167,10 +167,11 @@ bindkey '^e' edit-command-line
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  fzf
   git 
   zsh-syntax-highlighting
-  vi-mode
-  fzf
+  # zsh-athame-git
+  # vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -237,3 +238,4 @@ export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 # preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+unset zle_bracketed_paste

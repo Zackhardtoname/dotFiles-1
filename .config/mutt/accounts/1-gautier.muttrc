@@ -14,7 +14,7 @@ set mbox_type = Maildir
 #set sort=reverse-threads
 set sort=threads 
 set sort_aux=reverse-last-date-received
-set collapse_all=no
+set collapse_all=yes
 set uncollapse_jump                        # don't collapse on an unread message
 unauto_view
 auto_view text/html                                      # view html automatically

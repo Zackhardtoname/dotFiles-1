@@ -2,13 +2,13 @@
 
 #check_todo_active=$(pgrep -fx "st -e vim /home/gautierk/.todo/general/todo.txt /home/gautierk/.todo/hw/todo.txt /home/gautierk/.todo/shopping/todo.txt /home/gautierk/.todo/blogideas/todo.txt")
 
-check_todo_active="$(ps -aux | grep -c "general-todo-txt.txt")"
+check_todo_active="$(ps -aux | grep -c "general-todo.txt")"
 # notify-send "$check_todo_active"
 
 files="$(ls ~/.todo/ | grep todo | tr '\n' ' ')"
 # notify-send "$files"
 
-if [ $check_todo_active -gt 0 ]
+if [ $check_todo_active -gt 1 ]
 then
   i3-msg workspace 14:Todo
 else
