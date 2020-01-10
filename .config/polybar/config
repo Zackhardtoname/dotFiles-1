@@ -63,7 +63,7 @@ font-3 = "Twitter Color Emoji:style=Regular:size=5;0"
 ; font-3 = "Noto Color Emoji:style=Regular:size=-40;0"
 modules-left = i3 
 modules-center = mpd
-modules-right = openweathermap-fullfeatured pulseaudio xbacklight memory cpu batteryBAT1 batteryBAT0 date 
+modules-right = openweathermap-fullfeatured pulseaudio memory cpu batteryBAT1 batteryBAT0 date 
 ; xbacklight wlan eth filesystem temperature powermenu batteryBAT0 
 
 tray-position = right
@@ -269,7 +269,7 @@ label = %date% %time%
 type = internal/pulseaudio
 ; sink =  alsa_output.pci-0000_00_1b.0.analog-stereo
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume> 
 label-volume = Vol %percentage%%
 label-volume-foreground = ${root.foreground}
 

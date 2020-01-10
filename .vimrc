@@ -43,7 +43,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
-nmap <F8> :TagbarToggle<CR>
+nmap <C-t> :TagbarToggle<CR>
 
   set scrolloff=3
 
@@ -390,6 +390,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'skywind3000/asyncrun.vim'
   Plug 'conornewton/vim-pandoc-markdown-preview'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' } " 10-28
+  Plug 'https://github.com/adelarsq/vim-matchit'
   " Plug 'godlygeek/tabular',
   " Plug 'plasticboy/vim-markdown'
   " Plug 'vim-scripts/indentpython.vim'

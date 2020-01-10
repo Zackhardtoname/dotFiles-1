@@ -12,9 +12,14 @@
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec notify-send 'mute' # mute sound
 
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%; exec --no-startup-id notify-send -t 500 "Volume: " "$(sleep .01 && pacmd list-sinks | grep -m 1 \"volume: front\" | head -1 | awk '{print $5}')"; exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 # increase volume and unmute sound
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%; exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 # increase volume and unmute sound
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%; exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 # decrease volume and unmute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 1 # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/scripts/adjust_volume.sh increase 5 --max-volume 150; exec --no-startup-id ~/.local/bin/scripts/adjust_volume.sh unmute # increase volume and unmute sound
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/scripts/adjust_volume.sh decrease 5 --max-volume 150; exec --no-startup-id ~/.local/bin/scripts/adjust_volume.sh unmute # increase volume and unmute sound
+bindsym XF86AudioMute exec --no-startup-id ponymix mute # mute sound
+
+
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%; exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 # increase volume and unmute sound
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%; exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 # decrease volume and unmute sound
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 1 # mute sound
 
 # VGA Correction
 #  bindsym XF86Display exec --no-startup-id xrandr --output DP2 --auto --above eDP1 ; exec --no-startup-id sleep 3; exec --no-startup-id nitrogen --set-zoom-fill --head=0 --random ~/Backgrounds; exec --no-startup-id sleep 3; exec --no-startup-id nitrogen --set-zoom-fill --head=1 --random ~/Backgrounds

@@ -171,7 +171,7 @@ plugins=(
   git 
   zsh-syntax-highlighting
   # zsh-athame-git
-  # vi-mode
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -11,4 +11,4 @@ macro index,pager i3 '<sync-mailbox><enter-command>source /home/gautierk/.config
 
 ## Make quick html view macro
 bind index,pager V  noop        ## Unbinds V from version
-macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit><read-thread>"

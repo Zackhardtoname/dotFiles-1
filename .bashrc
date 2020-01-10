@@ -35,7 +35,7 @@ test -f ~/.git-completion.bash && . $_
 
 export PATH=$PATH:/home/gautierk/.vim/bundle/vim-live-latex-preview/bin:/home/gautierk/.local/bin
 export PATH="$HOME/.dynamic-colors/bin:$PATH"
-PATH="$HOME/.local/bin/scripts:${PATH}"
+PATH="home/gautierk/.local/bin/scripts:${PATH}"
 PATH="/root/.local/bin:${PATH}"
 export PATH
 
