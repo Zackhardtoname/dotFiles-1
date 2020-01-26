@@ -63,7 +63,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec st -n st-256color
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -200,7 +200,8 @@ bindsym $mod+p exec "APP=\\"KeeWeb\\"; if pgrep -x \\"$APP\\" > /dev/null 2>&1; 
 bindsym $mod+c exec "APP=\\"google-calendar\\"; CLASS=\\"google-calendar-nativefier-e22938\\"; if pgrep -x \\"google-calendar\\" > /dev/null 2>&1; then i3-msg workspace $wsCalendar; else google-calendar; fi"
 bindsym $mod+s exec "APP=\\"slack\\"; CLASS=\\"Slack\\"; if pgrep -x \\"$APP\\" > /dev/null 2>&1; then i3-msg \\"[class=\\"$CLASS\\"] scratchpad show\\"; else \\"$APP\\"; fi"
 bindsym $mod+v exec "if pgrep -x ncmpcpp > /dev/null 2>&1; then i3-msg [instance=\\"music\\"] scratchpad show; else urxvt -name music -e ncmpcpp && sleep 0.5; i3-msg [instance=\\"music\\"] scratchpad show; fi"
-bindsym $mod+Shift+c exec "if pgrep -fx 'urxvt -name calendar' > /dev/null 2>&1; then i3-msg [instance=\\"calendar\\"] scratchpad show; else urxvt -name calendar && sleep 0.5; i3-msg [instance=\\"calendar\\"] scratchpad show; fi"
+# bindsym $mod+Shift+c exec "if pgrep -fx 'urxvt -name calendar' > /dev/null 2>&1; then i3-msg [instance=\\"calendar\\"] scratchpad show; else urxvt -name calendar && sleep 0.5; i3-msg [instance=\\"calendar\\"] scratchpad show; fi"
+bindsym $mod+Shift+c exec "if pgrep -fx 'st -n calendar' > /dev/null 2>&1; then i3-msg [instance=\\"calendar\\"] scratchpad show; else st -n calendar && sleep 0.5; i3-msg [instance=\\"calendar\\"] scratchpad show; fi"
 # bindsym $mod+m exec "if pgrep -x neomutt > /dev/null 2>&1; then i3-msg [instance=\\"mail\\"] scratchpad show; else urxvt -name mail -e neomutt && sleep 0.5; i3-msg [instance=\\"mail\\"] scratchpad show; fi"
 bindsym $mod+m exec "if pgrep -x neomutt > /dev/null 2>&1; then i3-msg workspace $wsMail; else urxvt -name mail -e neomutt && sleep 0.5; i3-msg workspace $wsMail; fi"
 # bindsym $mod+Shift+o exec "APP=\\"ckillian-openauth.sh\\"; CLASS=\\"AuthenticatorGUI\\"; if pgrep -f \\"$APP\\" > /dev/null 2>&1; then i3-msg \\"[class=\\"$CLASS\\"] scratchpad show\\"; else exec ckillian-openauth.sh; fi"

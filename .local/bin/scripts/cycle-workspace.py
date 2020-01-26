@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.5
  
 import i3
 
@@ -8,6 +8,8 @@ workspaces = i3.get_workspaces()
 # figure out what is on, and what is currently on your screen.
 workspace = list(filter(lambda s: s['focused']==True, workspaces))
 output = list(filter(lambda s: s['active']==True, outputs))
+
+
 
 # figure out the other workspace name
 other_workspace = list(filter(lambda s: s['name']!=workspace[0]['output'], output))

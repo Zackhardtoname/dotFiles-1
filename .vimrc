@@ -34,6 +34,9 @@ let g:instant_markdown_autostart = 0
 let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
 "let g:instant_markdown_autoscroll = 0
 
+" Write to read only file
+cmap w!! w !sudo tee % > /dev/null
+
 
 " sets wrap with :Gdiff ing
 autocmd FilterWritePre * if &diff | setlocal wrap< | endif
@@ -262,6 +265,7 @@ endfunction
 "Paste without indentation
 set pastetoggle=<F10>
 inoremap <C-v> <F10><C-r>+<F10>
+nnoremap p p=`]
 
 
 nmap <Cr> o<Esc>

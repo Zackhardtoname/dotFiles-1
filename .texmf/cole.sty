@@ -1,5 +1,8 @@
 \ProvidesPackage{cole}
 
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\Ima}{Im}
+
 \usepackage{array}
 \usepackage{pifont}
 \usepackage{tikz}
@@ -19,3 +22,4 @@
   (\foreachitem\i\in\thecycle{\ifnum\icnt=1\else#1\fi\i})%
 }
 
+\usepackage{xlop}

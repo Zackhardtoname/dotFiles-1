@@ -9,20 +9,21 @@ Xft.lcdfilter: lcddefault
 
 URxvt.intensityStyles:	false
 URxvt.background:       [70]#000000
-URxvt.depth:		32
+!! URxvt.depth:		32
 URxvt.font: 		xft:monospace:size=12
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 *pointerColorBackground:          #2B2C2B
 *pointerColorForeground:          #16A085
-*fading:                          15
-*fadeColor:                       black
+!! *fading:                          15
+!! *fadeColor:                       black
 URxvt*mouseWheelScrollPage:       false
 URxvt*saveLines:                  5000
 
 
 !! Transparency (0-1):
-st.alpha: 0.92
+!!st-256color.alpha: 0.2
+calendar.alpha: 0.2
 
 !! Set a default font and font size as below:
 st.font: monospace-11.75;

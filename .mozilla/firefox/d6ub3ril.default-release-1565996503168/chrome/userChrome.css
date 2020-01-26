@@ -5,3 +5,5 @@
 }
 
 #sidebar { min-width:0px !important; max-width:none !important; }
+
+*|*:-moz-list-bullet, *|*:-moz-list-number {font-size: 1em;}

@@ -268,6 +268,8 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 ; sink =  alsa_output.pci-0000_00_1b.0.analog-stereo
+sink = bluez_sink.00_00_E0_0C_75_CE.a2dp_sink
+
 
 format-volume = <label-volume> 
 label-volume = Vol %percentage%%
