@@ -110,8 +110,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym F2 exec pcmanfm
 
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id "compton -b --config /home/gautierk/.config/compton.conf"
+bindsym $mod+t exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id "picom -b --config /home/gautierk/.config/picom.conf"
 #bindsym $mod+Ctrl+Shift+d --release exec "killall dunst; exec dunst; exec notify-send 'restart dunst'"
 bindsym $mod+Ctrl+Shift+d --release exec "killall dunst"; exec "dunst"; exec "notify-send 'Restart Dunst'";
 # bindsym $mod+Ctrl+Shift+d --release exec "notify-send go"
@@ -158,6 +158,7 @@ bindsym $mod+Shift+l move right
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b exec ~/.local/bin/scripts/polybar-toggle.sh
+bindsym $mod+Ctrl+Shift+b exec ~/.local/bin/scripts/bluetooth_toggle.sh
 # bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 bindsym $mod+Shift+s exec i3-display-swap.sh
 
@@ -199,11 +200,12 @@ bindsym $mod+p exec "APP=\\"KeeWeb\\"; if pgrep -x \\"$APP\\" > /dev/null 2>&1; 
 #bindsym $mod+n exec "APP=\\"simplenote\\"; CLASS=\\"Simplenote\\"; if pgrep -x \\"simplenote\\" > /dev/null 2>&1; then i3-msg \\"[class=\\"$CLASS\\"] scratchpad show\\"; else simplenote & sleep 2; i3-msg \\"[class=\\"$CLASS\\"] scratchpad show\\"; fi"
 bindsym $mod+c exec "APP=\\"google-calendar\\"; CLASS=\\"google-calendar-nativefier-e22938\\"; if pgrep -x \\"google-calendar\\" > /dev/null 2>&1; then i3-msg workspace $wsCalendar; else google-calendar; fi"
 bindsym $mod+s exec "APP=\\"slack\\"; CLASS=\\"Slack\\"; if pgrep -x \\"$APP\\" > /dev/null 2>&1; then i3-msg \\"[class=\\"$CLASS\\"] scratchpad show\\"; else \\"$APP\\"; fi"
-bindsym $mod+v exec "if pgrep -x ncmpcpp > /dev/null 2>&1; then i3-msg [instance=\\"music\\"] scratchpad show; else urxvt -name music -e ncmpcpp && sleep 0.5; i3-msg [instance=\\"music\\"] scratchpad show; fi"
+bindsym $mod+v exec ~/.local/bin/scripts/ncmpcpp_toggle.sh
+# "if pgrep -x ncmpcpp > /dev/null 2>&1; then i3-msg [instance=\\"music\\"] scratchpad show; else st -n music -e ncmpcpp && sleep 0.5; i3-msg [instance=\\"music\\"] scratchpad show; fi"
 # bindsym $mod+Shift+c exec "if pgrep -fx 'urxvt -name calendar' > /dev/null 2>&1; then i3-msg [instance=\\"calendar\\"] scratchpad show; else urxvt -name calendar && sleep 0.5; i3-msg [instance=\\"calendar\\"] scratchpad show; fi"
 bindsym $mod+Shift+c exec "if pgrep -fx 'st -n calendar' > /dev/null 2>&1; then i3-msg [instance=\\"calendar\\"] scratchpad show; else st -n calendar && sleep 0.5; i3-msg [instance=\\"calendar\\"] scratchpad show; fi"
 # bindsym $mod+m exec "if pgrep -x neomutt > /dev/null 2>&1; then i3-msg [instance=\\"mail\\"] scratchpad show; else urxvt -name mail -e neomutt && sleep 0.5; i3-msg [instance=\\"mail\\"] scratchpad show; fi"
-bindsym $mod+m exec "if pgrep -x neomutt > /dev/null 2>&1; then i3-msg workspace $wsMail; else urxvt -name mail -e neomutt && sleep 0.5; i3-msg workspace $wsMail; fi"
+bindsym $mod+m exec "~/.local/bin/scripts/mail-toggle.sh"
 # bindsym $mod+Shift+o exec "APP=\\"ckillian-openauth.sh\\"; CLASS=\\"AuthenticatorGUI\\"; if pgrep -f \\"$APP\\" > /dev/null 2>&1; then i3-msg \\"[class=\\"$CLASS\\"] scratchpad show\\"; else exec ckillian-openauth.sh; fi"
 # bindsym $mod+Shift+o exec "if pgrep -f JAuth.jar > /dev/null 2>&1; then i3-msg [class=\\"AuthenticatorGUI\\"] scratchpad show; else \\"ckillian-openauth.sh\\" && sleep 0.5; i3-msg [class=\\"AuthenticatorGUI\\"] scratchpad show; fi"
 # bindsym $mod+Shift+o exec "if pgrep -x JAuth.jar > /dev/null 2>&1; then i3-msg [class=AuthenticatorGUI] scratchpad show; else notify-send hello; fi"
@@ -214,7 +216,7 @@ bindsym $mod+Shift+o exec "if pgrep -x java > /dev/null 2>&1; then i3-msg [class
 bindsym $mod+Shift+i exec "~/.local/bin/scripts/networkmanager_dmenu &"
 
 # bindsym $mod+v exec "if pgrep -x ncmpcpp > /dev/null 2>&1; then i3-msg [instance=\\"music\\"] scratchpad show; else urxvt -name music -e ncmpcpp && sleep 0.5; i3-msg [instance=\\"music\\"] scratchpad show; fi"
-bindsym $mod+o exec firefox;
+bindsym $mod+o exec vivaldi-stable;
 
 
 # mpc
@@ -320,6 +322,8 @@ bindsym $mod+Shift+semicolon move container to workspace $wsMcGill; workspace $w
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
+#
+for_window [class=".*"] border pixel 2
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="Calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
@@ -348,6 +352,9 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="MPlayer"] floating enable
+for_window [title="Android Emulator.*"] floating enable
+for_window [title="x200: ~/work"] floating enable
+
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -502,11 +509,11 @@ mode "Calendar" {
 
 # Lock screen
 # exec --no-startup-id betterlockscreen -w dim
-bindsym $mod+9 exec betterlockscreen -l dim -s "lockscreen and suspend"
+bindsym $mod+9 exec betterlockscreen -s
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -517,7 +524,7 @@ exec --no-startup-id google-calendar
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -l dim -s 'lockscreen and suspend'"
+exec --no-startup-id xautolock -time 10 -locker "betterlockscreen -s" -detectsleep
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
