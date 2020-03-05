@@ -67,7 +67,7 @@ bindsym $mod+Return exec st -n st-256color
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym Ctrl+q exec mpc toggle;
+# bindsym Ctrl+q exec mpc toggle;
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_recency
@@ -203,7 +203,8 @@ bindsym $mod+s exec "APP=\\"slack\\"; CLASS=\\"Slack\\"; if pgrep -x \\"$APP\\" 
 bindsym $mod+v exec ~/.local/bin/scripts/ncmpcpp_toggle.sh
 # "if pgrep -x ncmpcpp > /dev/null 2>&1; then i3-msg [instance=\\"music\\"] scratchpad show; else st -n music -e ncmpcpp && sleep 0.5; i3-msg [instance=\\"music\\"] scratchpad show; fi"
 # bindsym $mod+Shift+c exec "if pgrep -fx 'urxvt -name calendar' > /dev/null 2>&1; then i3-msg [instance=\\"calendar\\"] scratchpad show; else urxvt -name calendar && sleep 0.5; i3-msg [instance=\\"calendar\\"] scratchpad show; fi"
-bindsym $mod+Shift+c exec "if pgrep -fx 'st -n calendar' > /dev/null 2>&1; then i3-msg [instance=\\"calendar\\"] scratchpad show; else st -n calendar && sleep 0.5; i3-msg [instance=\\"calendar\\"] scratchpad show; fi"
+bindsym $mod+Shift+Return exec "~/.local/bin/scripts/floater-toggle.sh"
+#"if pgrep -fx 'st -n floater' > /dev/null 2>&1; then i3-msg [instance=\\"floater\\"] scratchpad show; else st -n floater && sleep 0.5; i3-msg [instance=\\"floater\\"] scratchpad show; fi"
 # bindsym $mod+m exec "if pgrep -x neomutt > /dev/null 2>&1; then i3-msg [instance=\\"mail\\"] scratchpad show; else urxvt -name mail -e neomutt && sleep 0.5; i3-msg [instance=\\"mail\\"] scratchpad show; fi"
 bindsym $mod+m exec "~/.local/bin/scripts/mail-toggle.sh"
 # bindsym $mod+Shift+o exec "APP=\\"ckillian-openauth.sh\\"; CLASS=\\"AuthenticatorGUI\\"; if pgrep -f \\"$APP\\" > /dev/null 2>&1; then i3-msg \\"[class=\\"$CLASS\\"] scratchpad show\\"; else exec ckillian-openauth.sh; fi"
@@ -216,7 +217,7 @@ bindsym $mod+Shift+o exec "if pgrep -x java > /dev/null 2>&1; then i3-msg [class
 bindsym $mod+Shift+i exec "~/.local/bin/scripts/networkmanager_dmenu &"
 
 # bindsym $mod+v exec "if pgrep -x ncmpcpp > /dev/null 2>&1; then i3-msg [instance=\\"music\\"] scratchpad show; else urxvt -name music -e ncmpcpp && sleep 0.5; i3-msg [instance=\\"music\\"] scratchpad show; fi"
-bindsym $mod+o exec vivaldi-stable;
+bindsym $mod+o exec firefox;
 
 
 # mpc
@@ -363,12 +364,13 @@ for_window [urgent=latest] focus
 for_window [class="Simplenote"] move scratchpad
 for_window [class="KeeWeb"] move scratchpad
 for_window [class="Slack"] move scratchpad
+for_window [instance="floater"] move scratchpad
 # for_window [class="AuthenticatorGUI"] move scratchpad, floating_maximum_size 100 x 35
 #floating enable; resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 800px;
 for_window [class="AuthenticatorGUI"] floating enable, move scratchpad
 for_window [instance="music"] move container to scratchpad
 for_window [instance="hangups"] move container to scratchpad
-# for_window [instance="calendar"] move container to scratchpad
+for_window [instance="floater"] move container to scratchpad
 # for_window [instance="mail"] move container to scratchpad, fullscreen
 assign [instance="mail"] $wsMail
 assign [instance="calcurseMcGill"] $wsCalcurseMcGill
@@ -386,7 +388,10 @@ assign [instance="generaltodo"] 20:
 bindsym $mod+Ctrl+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+# bindsym $mod+Shift+r restart
+
+bindsym $mod+Ctrl+Shift+r restart
+bindsym $mod+Shift+r exec "st -e ~/.local/bin/scripts/vifmrun"
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -410,6 +415,7 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
+# bindsym $mod+r mode "resize"
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -509,7 +515,7 @@ mode "Calendar" {
 
 # Lock screen
 # exec --no-startup-id betterlockscreen -w dim
-bindsym $mod+9 exec betterlockscreen -s
+bindsym $mod+9 exec --no-startup-id ponymix mute; exec ~/.local/bin/scripts/bluetooth_connect.sh; exec betterlockscreen -s
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

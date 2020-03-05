@@ -22,11 +22,14 @@ export TEXINPUTS=/home/gautierk/.texmf//:
 
 export EDITOR="/usr/bin/vim"
 export VISUAL="vim"
+export GOOGLE_APPLICATION_CREDENTIALS="/home/gautierk/Keys/artifai-firebase-adminsdk.json"
 
 alias lt="ls *.pdf *.tex"
+alias pip="python -m pip"
 alias v="vim"
 alias gitnotes='git --git-dir=.gitnotes'
 alias githw='git --git-dir=.githw'
+alias vifm='vifmrun'
 
 
 # cd if not command
@@ -61,8 +64,8 @@ export FZF_BASE=/usr/bin/fzf
 # Luke smith advice
 
 # History in cache directory:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000
+SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
 
 # Basic auto/tab complete:
@@ -241,3 +244,12 @@ export ANDROID_SDK_PATH=$HOME/Android/Sdk
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 unset zle_bracketed_paste
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/gautierk/google-cloud-sdk/path.zsh.inc' ]; then . '/home/gautierk/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/gautierk/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/gautierk/google-cloud-sdk/completion.zsh.inc'; fi
+
+stty -ixon
+

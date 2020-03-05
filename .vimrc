@@ -140,6 +140,29 @@ let g:ycm_use_ultisnips_completer = 1
 "       \ 'plainex': 1
 "       \}
 
+" Disable Ex mode and vim history mode
+map q: <Nop>
+nnoremap Q <nop>
+
+let g:vimwiki_list = [{'path': '~/.vimwiki/'}]
+
+au BufRead,BufNewFile *.wiki set filetype=vimwiki
+:autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+function! ToggleCalendar()
+  execute ":Calendar"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction
+:autocmd FileType vimwiki map c :call ToggleCalendar()
+
 let g:md_pdf_viewer="zathura"
 let g:md_args = "--pdf-engine=xelatex"
 " --template eisvogel --listings
@@ -298,16 +321,16 @@ let g:netrw_winsize = 15
 	set splitbelow splitright
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_tex_checkers = ['chktex']
-let g:syntastic_quiet_messages = {
-  \ "type":    "style"}
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_tex_checkers = ['chktex']
+" let g:syntastic_quiet_messages = {
+"   \ "type":    "style"}
 
 
 " fzf shortcut
@@ -337,8 +360,9 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:vimtex_quickfix_latexlog = {'default' : 0}
 set conceallevel=1
-  let g:vimtex_imaps_disabled = ['K']
+let g:vimtex_imaps_disabled = ['K']
 let g:tex_conceal=''
+" let g:tex_conceal='abdmg'
     let g:vimtex_mappings_disable = {
         \ 'n': ['K'],
         \}
@@ -366,6 +390,8 @@ let g:UltiSnipsListSnippets="<c-tab>"
 " correct spelling
 " inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
+let g:prettier#exec_cmd_async = 1
+
 
 
 call plug#begin('~/.vim/plugged')
@@ -374,16 +400,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
   Plug 'tpope/vim-surround'
-  Plug 'dhruvasagar/vim-zoom'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'majutsushi/tagbar'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-eunuch'
-  Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-  Plug 'akarzim/vim-decode-qp', { 'for': 'asc' }
-  Plug 'xolox/vim-notes',
   Plug 'xolox/vim-misc',
   Plug 'vim-scripts/Align',
   Plug 'dbeniamine/todo.txt-vim'
@@ -395,11 +416,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'conornewton/vim-pandoc-markdown-preview'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' } " 10-28
   Plug 'https://github.com/adelarsq/vim-matchit'
+  " Plug 'dense-analysis/ale'
+  Plug 'mattn/calendar-vim'
+
   " Plug 'godlygeek/tabular',
   " Plug 'plasticboy/vim-markdown'
   " Plug 'vim-scripts/indentpython.vim'
   " Plug 'nvie/vim-flake8'
   " Plug 'tell-k/vim-autopep8'
+  " Plug 'akarzim/vim-decode-qp', { 'for': 'asc' }
+  " Plug 'xolox/vim-notes',
+  " Plug 'dhruvasagar/vim-zoom'
+  " Plug 'tpope/vim-eunuch'
+  " Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 call plug#end()
   nmap <C-J> gj
   nmap <C-K> gk
@@ -413,4 +442,4 @@ if has('persistend_undo')
 	endif
 
 
-execute pathogen#infect()
+" execute pathogen#infect()

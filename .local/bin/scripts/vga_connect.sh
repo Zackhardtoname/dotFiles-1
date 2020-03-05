@@ -10,7 +10,9 @@ notify-send "$MONITOR_COUNT"
 if [ $MONITOR_COUNT -eq 2 ]; then
   notify-send "Two Monitors"
   # xrandr --output DP2 --auto --right-of eDP1
-  xrandr --output DP2 --auto --above eDP1
+  # xrandr --output DP2 --above eDP1
+  xrandr --auto
+  xrandr --output DP2 --above eDP1 # --mode 1600x900
 elif [ $MONITOR_COUNT -eq 1 ]; then
   notify-send "One Monitor"
   xrandr --auto

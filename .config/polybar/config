@@ -62,7 +62,7 @@ font-3 = "Twitter Color Emoji:style=Regular:size=5;0"
 
 ; font-3 = "Noto Color Emoji:style=Regular:size=-40;0"
 modules-left = i3 
-modules-center = mpd
+modules-center = mpd system-bluetooth-bluetoothctl
 modules-right = openweathermap-fullfeatured pulseaudio memory cpu batteryBAT1 batteryBAT0 date 
 ; xbacklight wlan eth filesystem temperature powermenu batteryBAT0 
 
@@ -435,5 +435,12 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+exec = ~/.local/bin/scripts/system-bluetooth-bluetoothctl.sh
+tail = true
+click-left = ~/.local/bin/scripts/system-bluetooth-bluetoothctl.sh --toggle &
 
 ; vim:ft=dosini

@@ -21,7 +21,7 @@ set uncollapse_new     = yes  # open threads when new mail
 set uncollapse_jump    = yes  # jump to unread message when uncollapse
 set collapse_unread    = no   # don't collapse threads with unread mails
 folder-hook . push '<collapse-all>'   # Everything collapsed by default
-folder-hook . set record=^
+# folder-hook . set record=^
 unauto_view
 auto_view text/html                                      # view html automatically
 alternative_order text/plain text/enriched text/html     # save html for last
@@ -42,6 +42,7 @@ unmailboxes *
 
 set spoolfile = "+INBOX"
 set record = "+[Gmail].Sent\ Mail"
+set copy = no
 set postponed = "+[Gmail].Drafts"
 set trash = "+[Gmail].Trash"
 # =Gautier =INBOX =====================  "=[Gmail].Starred" 

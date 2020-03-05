@@ -368,12 +368,12 @@
 		\theoremstyle{definition}
 
 		% This ought to be a real theorem, but would be too much italics
-		\ifevanmdthm
-			\declaretheorem[style=thmbluebox,name=Algorithm,sibling=theorem]{algorithm}
-		\else
-			\newtheorem{algorithm}[theorem]{Algorithm}
-			\newtheorem*{algorithm*}{Algorithm}
-		\fi
+		% \ifevanmdthm
+		% 	\declaretheorem[style=thmbluebox,name=Algorithm,sibling=theorem]{algorithm}
+		% \else
+		% 	\newtheorem{algorithm}[theorem]{Algorithm}
+		% 	\newtheorem*{algorithm*}{Algorithm}
+		% \fi
 
 		\newtheorem{claim}[theorem]{Claim}
 		\newtheorem{conjecture}[theorem]{Conjecture}
@@ -384,7 +384,9 @@
 		\newtheorem{case}[theorem]{Case}
 		\newtheorem{ques}[theorem]{Question}
 		\newtheorem{exercise}[theorem]{Exercise}
+    \newtheorem{hwexercise}{Exercise}
 		\newtheorem{problem}[theorem]{Problem}
+    \newtheorem{hwproblem}{Problem}
 		\newtheorem{recall}[theorem]{Recall}
 
 		\newtheorem*{answer*}{Answer}

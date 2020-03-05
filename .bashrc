@@ -10,6 +10,8 @@ cpf() { cp "$@" && goto "$_"; }
 mvf() { mv "$@" && goto "$_"; }
 goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 
+export GOOGLE_APPLICATION_CREDENTIALS="/home/gautierk/Keys/artifai-firebase-adminsdk.json"
+
 force_color_prompt=yes
 
 # prevent freezing on C-s
