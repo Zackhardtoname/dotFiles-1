@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+cd $1
+
+i3-msg split v > /dev/null
+
+st &
+
+sleep 0.1
+
+i3-msg split h > /dev/null
+
+st &
+
+sleep 0.1 
+
+i3-msg focus up > /dev/null
+
+i3-msg resize set height 80ppt > /dev/null
+
+nvim
+
