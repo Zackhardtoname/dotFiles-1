@@ -95,8 +95,8 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
-bindkey '^M' autosuggest-execute
-# bindkey '^ ' autosuggest-accept
+ #bindkey '^M' autosuggest-execute
+bindkey '^ ' autosuggest-execute
 
 
 # Use lf to switch directories and bind it to ctrl-o
