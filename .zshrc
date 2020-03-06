@@ -25,6 +25,8 @@ export VISUAL="vim"
 export GOOGLE_APPLICATION_CREDENTIALS="/home/gautierk/Keys/artifai-firebase-adminsdk.json"
 
 alias lt="ls *.pdf *.tex"
+alias vim="nvim"
+alias v="nvim"
 alias pip="python -m pip"
 alias v="vim"
 alias gitnotes='git --git-dir=.gitnotes'
@@ -93,6 +95,8 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
+bindkey '^M' autosuggest-execute
+# bindkey '^ ' autosuggest-accept
 
 
 # Use lf to switch directories and bind it to ctrl-o
@@ -173,6 +177,7 @@ bindkey '^e' edit-command-line
 plugins=(
   fzf
   git 
+  zsh-autosuggestions
   zsh-syntax-highlighting
   # zsh-athame-git
   vi-mode
@@ -221,26 +226,26 @@ export ANDROID_SDK_PATH=$HOME/Android/Sdk
 
 
 
-# # Change cursor shape for different vi modes.
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]] ||
-#      [[ $1 = 'block' ]]; then
-#     echo -ne '\e[1 q'
-#   elif [[ ${KEYMAP} == main ]] ||
-#        [[ ${KEYMAP} == viins ]] ||
-#        [[ ${KEYMAP} = '' ]] ||
-#        [[ $1 = 'beam' ]]; then
-#     echo -ne '\e[5 q'
-#   fi
-# }
-# zle -N zle-keymap-select
-# zle-line-init() {
-#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#     echo -ne "\e[5 q"
-# }
-# zle -N zle-line-init
-# echo -ne '\e[5 q' # Use beam shape cursor on startup.
-# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 unset zle_bracketed_paste
