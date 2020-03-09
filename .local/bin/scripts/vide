@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-cd $1
+if [[ ! -z $1 ]]; then
+  cd $1
+fi
+
+sleep 0.1
 
 i3-msg split v > /dev/null
 

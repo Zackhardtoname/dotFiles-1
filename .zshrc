@@ -20,12 +20,12 @@ export TEXMFHOME=$HOME/.texmf
 export TEXINPUTS=/home/gautierk/.texmf//:
 
 
-export EDITOR="/usr/bin/vim"
-export VISUAL="vim"
+export EDITOR=nvim
+export VISUAL=nvim
 export GOOGLE_APPLICATION_CREDENTIALS="/home/gautierk/Keys/artifai-firebase-adminsdk.json"
 
 alias lt="ls *.pdf *.tex"
-alias vim="nvim"
+alias vim="/usr/bin/nvim"
 alias v="nvim"
 alias pip="python -m pip"
 alias v="vim"
